@@ -11648,8 +11648,26 @@ date:function(a,b){return this.optional(b)||!/Invalid|NaN/.test(new Date(a))},da
 (function(c){!jQuery.event.special.focusin&&!jQuery.event.special.focusout&&document.addEventListener&&c.each({focus:"focusin",blur:"focusout"},function(a,b){function d(e){e=c.event.fix(e);e.type=b;return c.event.handle.call(this,e)}c.event.special[b]={setup:function(){this.addEventListener(a,d,true)},teardown:function(){this.removeEventListener(a,d,true)},handler:function(e){arguments[0]=c.event.fix(e);arguments[0].type=b;return c.event.handle.apply(this,arguments)}}});c.extend(c.fn,{validateDelegate:function(a,
 b,d){return this.bind(b,function(e){var f=c(e.target);if(f.is(a))return d.apply(f,arguments)})}})})(jQuery);
 
+
 $(document).ready(function() {
 
+    $('a[href^="#"]').on('click',function (e) {
+          e.preventDefault();
+
+          var target = this.hash;
+          var $target = $(target);
+
+          $('html, body').stop().animate({
+              'scrollTop': $target.offset().top
+          }, 900, 'swing', function () {
+
+             setTimeout(function(){
+                $('form').find('.btn-warning').click();
+              }, 100);
+
+              // window.location.hash = target;
+          });
+      });
 
       var wow = new WOW(
         {
