@@ -11663,9 +11663,8 @@ $(document).ready(function() {
 
              setTimeout(function(){
                 $('form').find('.btn-warning').click();
-              }, 100);
+              }, 1200);
 
-              // window.location.hash = target;
           });
       });
 
